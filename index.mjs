@@ -1,7 +1,7 @@
 import dotenv from 'dotenv';
 dotenv.config();
 
-import { authenticateAndGetSessionCookie, updateManualActionStatus, postAttachment, signOut } from './src/updateValueEdge.js';
+import { authenticateAndGetSessionCookie, updateManualActionStatus } from './src/updateValueEdge.js';
 import { checkSonarStatus } from './src/checkSonarStatus.js';
 import { takeScreenshot } from './src/takeScreenshot.js';
 
@@ -20,12 +20,6 @@ async function main() {
 
         console.log("Beginning update to Manual Action...")
         await updateManualActionStatus(cookie, sonarStatus);
-
-        console.log("Posting attachment")
-        await postAttachment(cookie);
-
-        console.log("Signing out")
-        await signOut(cookie);
 
     } catch (error) {
         console.error("Error in main function:", error.message);
